@@ -13,6 +13,7 @@ func main() {
     
     fmt.Printf("function type %T\n", Distance)
     fmt.Printf("method type %T\n", Point.Distance)
+    fmt.Printf("method selector %T\n", p.Distance)
     fmt.Printf("point type %T\n", p)
     
     path1 := Path{
