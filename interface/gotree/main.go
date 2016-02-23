@@ -19,8 +19,11 @@ func main() {
     fmt.Println("Post Order")
     tree.PostOrder(root)
     
+    fmt.Println("Print tree")
+    fmt.Println(root)
         
     tree.Sort(values)
     
     fmt.Println(values)
+    
 }

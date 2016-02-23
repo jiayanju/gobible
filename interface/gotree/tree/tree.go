@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+//Tree Binary tree
 type Tree struct {
 	value       int
 	left, right *Tree
@@ -26,6 +27,27 @@ func NewTree(values []int) *Tree {
 		root = add(root, v)
 	}
 	return root
+}
+
+func (t *Tree) String() string {
+	var result string
+
+	var stack []*Tree
+	var node = t
+	for node != nil || len(stack) > 0 {
+		for node != nil {
+			stack = append(stack, node)
+			node = node.left
+		}
+
+		if len(stack) > 0 {
+			node = stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			result += fmt.Sprintf(" %d", node.value)
+			node = node.right
+		}
+	}
+	return result
 }
 
 func appendValues(values []int, t *Tree) []int {
@@ -56,6 +78,7 @@ func visit(t *Tree) {
 	fmt.Println(t.value)
 }
 
+//PreOrder pre order traversal tree
 func PreOrder(t *Tree) {
 	if t != nil {
 		visit(t)
@@ -64,6 +87,7 @@ func PreOrder(t *Tree) {
 	}
 }
 
+//InOrder in order traversal tree
 func InOrder(t *Tree) {
 	if t != nil {
 		InOrder(t.left)
@@ -72,6 +96,7 @@ func InOrder(t *Tree) {
 	}
 }
 
+//PostOrder post order traversal tree
 func PostOrder(t *Tree) {
 	if t != nil {
 		PostOrder(t.left)
